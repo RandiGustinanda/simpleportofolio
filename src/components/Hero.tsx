@@ -20,6 +20,7 @@ export default function Hero() {
 
   const [leaves, setLeaves] = useState<Leaf[]>([])
 
+  // Random daun
   useEffect(() => {
     const leafData = Array.from({ length: 6 }).map(() => ({
       left: Math.random() * 100,
@@ -29,6 +30,7 @@ export default function Hero() {
     setLeaves(leafData)
   }, [])
 
+  // Animasi teks
   useEffect(() => {
     gsap.fromTo(
       titleRef.current,
@@ -49,6 +51,7 @@ export default function Hero() {
     )
   }, [])
 
+  // Awan animasi
   useEffect(() => {
     if (!cloudsRef.current) return
     const cloudChildren = Array.from(cloudsRef.current.children)
@@ -64,6 +67,7 @@ export default function Hero() {
     })
   }, [])
 
+  // Animasi daun
   useEffect(() => {
     if (leaves.length === 0) return
     const leafChildren = leavesRef.current?.children
@@ -85,7 +89,7 @@ export default function Hero() {
   }, [leaves])
 
   return (
-    <section className="relative overflow-hidden h-screen flex items-center justify-center bg-gradient-to-b from-[#BEE9E8] to-[#C3F0CA] text-gray-900 px-6">
+    <section className="relative overflow-hidden min-h-screen flex items-center justify-center bg-gradient-to-b from-[#BEE9E8] to-[#C3F0CA] text-gray-900 px-6 py-20">
       {/* Awan */}
       <div ref={cloudsRef} className="absolute inset-0 z-0 opacity-30 pointer-events-none">
         {[...Array(3)].map((_, i) => (
@@ -110,7 +114,7 @@ export default function Hero() {
         {leaves.map((leaf, i) => (
           <svg
             key={i}
-            className="absolute w-6 h-6 text-green-600 opacity-70"
+            className="absolute w-8 h-8 text-green-600 opacity-70"
             style={{
               left: `${leaf.left}%`,
               top: `${leaf.top}px`,
@@ -125,10 +129,10 @@ export default function Hero() {
       </div>
 
       {/* Konten utama */}
-      <div className="relative z-20 flex flex-col md:flex-row items-center max-w-6xl w-full gap-12">
+      <div className="relative z-20 flex flex-col md:flex-row items-center max-w-7xl w-full gap-16">
         {/* Video kiri */}
         <div className="shrink-0">
-          <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white shadow-lg">
+          <div className="w-72 h-72 md:w-[22rem] md:h-[22rem] rounded-full overflow-hidden border-4 border-white shadow-2xl">
             <video
               src="/randi.mp4"
               autoPlay
@@ -142,32 +146,32 @@ export default function Hero() {
 
         {/* Teks kanan */}
         <div className="text-center md:text-left flex-1">
-          <h1 ref={titleRef} className="text-4xl md:text-5xl font-bold mb-4">
+          <h1 ref={titleRef} className="text-5xl md:text-6xl font-extrabold mb-6 leading-tight">
             Halo, Saya Randi
           </h1>
 
-          <p ref={descRef} className="text-lg mb-6 max-w-xl mx-auto md:mx-0">
+          <p ref={descRef} className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto md:mx-0 leading-relaxed">
             Saya seorang Frontend Developer yang suka menggabungkan teknologi, animasi, dan desain untuk membangun pengalaman web yang menyenangkan.
           </p>
 
-          <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 mb-6 justify-center md:justify-start">
-            <Button ref={btnRef} size="lg">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 justify-center md:justify-start">
+            <Button ref={btnRef} size="lg" className="px-8 py-4 text-lg">
               Lihat Proyek Saya
             </Button>
 
             {/* Sosial media */}
-            <div className="flex space-x-4">
+            <div className="flex space-x-6 mt-4 sm:mt-0">
               <a href="https://instagram.com/username" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                <Instagram className="w-6 h-6 hover:scale-110 transition-transform duration-200" />
+                <Instagram className="w-7 h-7 hover:scale-110 transition-transform duration-200" />
               </a>
               <a href="https://linkedin.com/in/username" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                <Linkedin className="w-6 h-6 hover:scale-110 transition-transform duration-200" />
+                <Linkedin className="w-7 h-7 hover:scale-110 transition-transform duration-200" />
               </a>
               <a href="https://github.com/username" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                <Github className="w-6 h-6 hover:scale-110 transition-transform duration-200" />
+                <Github className="w-7 h-7 hover:scale-110 transition-transform duration-200" />
               </a>
               <a href="mailto:randi@email.com" aria-label="Email">
-                <Mail className="w-6 h-6 hover:scale-110 transition-transform duration-200" />
+                <Mail className="w-7 h-7 hover:scale-110 transition-transform duration-200" />
               </a>
             </div>
           </div>

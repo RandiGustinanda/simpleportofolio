@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
 import { PT_Sans } from "next/font/google";
 import "./globals.css";
+import FloatingSidebar from "@/components/ui/FloatingSidebar"; // 🧠 Tambahkan ini
 
 const nunito = Nunito({
   variable: "--font-nunito",
@@ -29,8 +30,12 @@ export default function RootLayout({
       <body
         className={`${nunito.variable} ${ptSans.variable} antialiased relative`}
       >
-        <div className="texture" />
-        {children}
+        <FloatingSidebar /> {/* ✅ Sidebar muncul di depan konten */}
+
+        {/* ⬇️ Beri padding agar konten tidak ketumpuk sidebar */}
+      
+          {children}
+
       </body>
     </html>
   );
